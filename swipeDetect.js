@@ -70,6 +70,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
           case "circle":
               output.innerHTML = "STUPEFY";
               console.log("Circle Gesture");
+              $(".flash").show(100);
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
