@@ -15,7 +15,7 @@
 	background-color: #FF0000;
 	width: 1000;
 	height: 300; 
-	opacity: '0.5';
+	opacity: .75;
 	font-family: "Times New Roman", Times, serif;
 	font-size: 8em;
 	font-weight: bold;
@@ -26,5 +26,4 @@
 
 #wand {
 	position: absolute;
-	left: 100px;
 }
