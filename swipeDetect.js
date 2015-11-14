@@ -39,6 +39,7 @@
 
 var wandSwipeReset = true;
 var wandPokeReset = true;
+var caseClosed = true;
 var factor = 2.0;
 
 function pokeReset() {
@@ -46,6 +47,9 @@ function pokeReset() {
 }
 function swipeReset() {
   wandSwipeReset = true;
+}
+function close() {
+  casedClosed = true;
 }
 
 function swipeWand() {
@@ -73,8 +77,10 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
         switch (gesture.type){
           case "circle":
               if (gesture.duration > 100000) {
+                caseClosed = false;
                 pokeWand();
-                $(".stupefy").show(100, function(){$(this).hide("slow")});
+                $(".stupefy").show(100, function(){$(this).hide("slow",
+                  function(){close()})});
               }
               break;
           case "keyTap":
@@ -85,8 +91,10 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               break;
           case "swipe":
           if (gesture.duration > 100000) {
+                caseClosed = false;
                 swipeWand();
-                $(".protego").show(100, function(){$(this).hide("slow")});
+                $(".protego").show(100, function(){$(this).hide("slow", 
+                  function(){close()})});
               }
               break;
         }
