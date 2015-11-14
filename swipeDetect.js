@@ -36,32 +36,6 @@
 
 	var options = {enableGestures: true};
 
-	/*Leap.loop(options, function(frame) {
-		frameString = concatData("frame_id", frame.id);
-		frameString += concatData("num_hands", frame.hands.length);
-		frameString += concatData("num_fingers", frame.fingers.length);
-		frameString += "<br>";
-
-		for (var i = 0, len = frame.hands.length; i < len; i++) {
-			hand = frame.hands[i];
-			handString = concatData("hand_type", hand.type);
-			handString += concatData("pinch_string", hand.pinchStrength);
-			handString += concatData("grab_strength", hand.grabStrength);
-			fingerString = concatJointPosition("finger_thumb_dip", hand.thumb.dipPosition);
-			for (var j = 0, len2 = hand.fingers.length; j < len2; j++) {
-				finger = hand.fingers[j];
-				fingerString += concatData("finger_type", finger.type) + " (" + getFingerName(finger.type) + ")"
-				fingerString += concatJointPosition("finger_dip", finger.dipPosition);
-				fingerString += concatJointPosition("finger_pip", finger.pipPosition);
-				fingerString += concatJointPosition("finger_mcp", finger.mcpPosition);
-				fingerString += "<br>";
-
-			}
-			frameString += handString;
-			frameString += fingerString;
-		}
-		output.innerHTML = frameString;
-	});*/
 
 var wandSwipeReset = true;
 var wandPokeReset = true;
@@ -98,8 +72,10 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
-              pokeWand();
-              $(".stupefy").show(100, function(){$(this).hide("slow")});
+              if (gesture.duration > 100000) {
+                pokeWand();
+                $(".stupefy").show(100, function(){$(this).hide("slow")});
+              }
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
@@ -108,8 +84,10 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               console.log("Screen Tap Gesture");
               break;
           case "swipe":
-              swipeWand();
-              $(".protego").show(100, function(){$(this).hide("slow")});
+          if (gesture.duration > 100000) {
+                swipeWand();
+                $(".protego").show(100, function(){$(this).hide("slow")});
+              }
               break;
         }
 
