@@ -1,20 +1,4 @@
-
-
-<!DOCTYPE>
-<html>
-<head>
-</head>
-
-<body>
-	<h1>Hello, LeapJS (V2)!</h1>
-	<div id="output"></div>
-</body>
-
-<script src="http://js.leapmotion.com/leap-0.6.0-beta1.min.js"></script>
-
-<<<<<<< HEAD
-<script type="text/javascript">
-
+//swipe detect js
 	function concatData(id, data) {
 		return id + ": " + data + "<br>";
 	}
@@ -88,11 +72,11 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
-              output.innerHTML = "STUPEFY!"
+              output.innerHTML = "STUPIFY!"
               break;
           case "screenTap":
               console.log("Screen Tap Gesture");
-              output.innerHTML = "STUPEFY!"
+              output.innerHTML = "STUPIFY!"
               break;
           case "swipe":
               output.innerHTML = "Block Bitch";
@@ -105,8 +89,3 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     });
   }
 });
-=======
-<script src="swipeDetect.js"></script>
->>>>>>> origin/master
-
-</html>
