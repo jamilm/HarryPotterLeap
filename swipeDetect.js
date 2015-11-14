@@ -63,12 +63,42 @@
 		output.innerHTML = frameString;
 	});*/
 
+var wandSwipeReset = true;
+var wandPokeReset = true;
+var factor = 2.0;
+
+function pokeReset() {
+  wandPokeReset = true;
+}
+function swipeReset() {
+  wandSwipeReset = true;
+}
+
+function swipeWand() {
+  if (wandPokeReset && wandSwipeReset) {
+    wandSwipeReset = false;
+    $("#wand").animate({left: '50em'}, 100,
+      function(){$("#wand").animate({left: '0px'}, 100,
+        function(){swipeReset()})});
+  }
+};
+
+function pokeWand() {
+  var wand = $("#wand");
+  if (wandPokeReset && wandSwipeReset) {
+    wandPokeReset = false;
+    wand.animate({width: wand.width() / factor, height: wand.height() / factor}, 100,
+      function(){wand.animate({width: 460, height: 276}, 100,
+        function(){pokeReset()})});
+  }
+}
+
 var controller = Leap.loop({enableGestures: true}, function(frame){
   if(frame.valid && frame.gestures.length > 0){
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
-
+              pokeWand();
               $(".stupefy").show(100, function(){$(this).hide("slow")});
               break;
           case "keyTap":
@@ -78,6 +108,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               console.log("Screen Tap Gesture");
               break;
           case "swipe":
+              swipeWand();
               $(".protego").show(100, function(){$(this).hide("slow")});
               break;
         }
