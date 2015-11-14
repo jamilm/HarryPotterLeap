@@ -68,8 +68,9 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
-
-              $(".stupefy").show(100, function(){$(this).hide("slow")});
+              if (gesture.duration > 100000) {
+                $(".stupefy").show(100, function(){$(this).hide("slow")});
+              }
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
@@ -78,7 +79,9 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               console.log("Screen Tap Gesture");
               break;
           case "swipe":
-              $(".protego").show(100, function(){$(this).hide("slow")});
+          if (gesture.duration > 100000) {
+                $(".protego").show(100, function(){$(this).hide("slow")});
+              }
               break;
         }
 
