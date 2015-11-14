@@ -1,6 +1,23 @@
-.flash {
-	background-color: #2E9AFE;
-	width: 563;
-	height: 272; 
+.protego {
+	background-color: #C0C0C0;
+	width: 1000;
+	height: 150; 
+	font-family: "Times New Roman", Times, serif;
+	font-size: 8em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	display: none;
+}
+
+.stupefy {
+	background-color: #FF0000;
+	width: 1000;
+	height: 150; 
+	font-family: "Times New Roman", Times, serif;
+	font-size: 8em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
 	display: none;
 }
