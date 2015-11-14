@@ -68,15 +68,14 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
+              output.innerHTML = "STUPEFY";
               console.log("Circle Gesture");
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
-              output.innerHTML = "STUPEFY!"
               break;
           case "screenTap":
               console.log("Screen Tap Gesture");
-              output.innerHTML = "STUPEFY!"
               break;
           case "swipe":
               output.innerHTML = "Block Bitch";
