@@ -68,9 +68,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
-              output.innerHTML = "STUPEFY";
-              console.log("Circle Gesture");
-              $(".flash").show(100, function(){$(this).hide("slow")});
+              $(".stupefy").show(100, function(){$(this).hide("slow")});
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
@@ -79,7 +77,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               console.log("Screen Tap Gesture");
               break;
           case "swipe":
-              output.innerHTML = "Block Bitch";
+              $(".protego").show(100, function(){$(this).hide("slow")});
               break;
         }
 
