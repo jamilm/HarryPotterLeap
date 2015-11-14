@@ -21,3 +21,8 @@
 	vertical-align: middle;
 	display: none;
 }
+
+#wand {
+	position: absolute;
+	left: 100px;
+}
