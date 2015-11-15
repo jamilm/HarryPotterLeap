@@ -34,6 +34,25 @@ myState.create = function(){
 
 
     this.control = Kiwi.Plugins.LEAPController.createController();
+
+    //add event listener for controller
+    this.control.leapControl.on('gesture', function(gesture, frame){
+      switch (gesture.type){
+          case "circle":
+              console.log("Circle Gesture");
+              break;
+          case "keyTap":
+              console.log("Key Tap Gesture");
+              break;
+          case "screenTap":
+              console.log("Screen Tap Gesture");
+              break;
+          case "swipe":
+             console.log("Swipe Gesture");
+              break;
+        }
+    });
+
 }
 
 myState.update = function(){
