@@ -99,7 +99,23 @@ Kiwi.Plugins.LEAPController.createController = function(game) {
       //console.log("Receiving data from device.");
     });
 
-
+    //Add event listener for gestures
+    Kiwi.Plugins.LEAPController.leapControl.on('gesture', function(gesture, frame){
+      switch (gesture.type){
+          case "circle":
+              console.log("Circle Gesture");
+              break;
+          case "keyTap":
+              console.log("Key Tap Gesture");
+              break;
+          case "screenTap":
+              console.log("Screen Tap Gesture");
+              break;
+          case "swipe":
+             console.log("Swipe Gesture");
+              break;
+        }
+    });
 
 
 
