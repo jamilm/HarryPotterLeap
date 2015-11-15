@@ -41,67 +41,78 @@ myState.create = function(){
     var gestureAllow = true;
 
     //add event listener for controller
-    this.control.leapControl.on('gesture', function(gesture, frame){
 
-        var socket = io();
-
-        var sendAttack(gesture.type) {
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-        }
-
-        socket.on('spell', function(gesture.type){
-            $('#messages').;
-        });
-
-
-        var io = require('socket.io')();
-        io.on('connection', function(socket){
-            socket.to('others').emit('an event', { some: 'data' });
-        });
-
-      switch (gesture.type){
-          case "circle":
-            if (gestureAllow) {
-                gestureAllow = false;
-                myState.stupefy.visible = true;
-                myState.stupefyText.visible = true;
-
-                socket.broadcast.emit('spell', {});
-                $('#m').val('');
-                return false;
-
-                window.setTimeout(function() {
-                    myState.stupefy.visible = false;
-                    myState.stupefyText.visible = false;
-                }, 500);
-                console.log("Circle Gesture");
-                window.setTimeout(function() {gestureAllow = true}, 500);
-            }
-            break;
-          case "keyTap":
-            console.log("Key Tap Gesture");
-            break;
-          case "screenTap":
-            console.log("Screen Tap Gesture");
-            break;
-          case "swipe":
-            if (gestureAllow) {
-                gestureAllow = false;
-                myState.protego.visible = true;
-                myState.protegoText.visible = true;
-                window.setTimeout(function() {
-                    myState.protego.visible = false;
-                    myState.protegoText.visible = false;
-                }, 500);
-                console.log("Swipe Gesture");
-                window.setTimeout(function() {gestureAllow = true}, 500);
-            }
-            break;
-        }
+    var server = require('http').createServer();
+    var io = require('socket.io')(server);
+    io.on('connection', function(socket){
+      socket.on('event', function(data){});
+      socket.on('disconnect', function(){});
     });
 
+    server.listen();
+    io.on('connection', function(socket){
+        
+
+        var castSpell(spell) {
+            socket.to('others').emit('spell', { spell: spell });
+        }
+
+        this.control.leapControl.on('gesture', function(gesture, frame){
+
+            var socket = io();
+
+            var sendAttack(spell) {
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            }
+
+            socket.on('spell', function(gesture.type){
+                $('#messages').;
+            });
+
+
+            
+
+          switch (gesture.type){
+              case "circle":
+                if (gestureAllow) {
+                    gestureAllow = false;
+                    myState.stupefy.visible = true;
+                    myState.stupefyText.visible = true;
+
+                    socket.broadcast.emit('spell', {});d
+
+                    window.setTimeout(function() {
+                        myState.stupefy.visible = false;
+                        myState.stupefyText.visible = false;
+                    }, 500);
+                    console.log("Circle Gesture");
+                    window.setTimeout(function() {gestureAllow = true}, 500);
+                }
+                break;
+              case "keyTap":
+                console.log("Key Tap Gesture");
+                break;
+              case "screenTap":
+                console.log("Screen Tap Gesture");
+                break;
+              case "swipe":
+                if (gestureAllow) {
+                    gestureAllow = false;
+                    myState.protego.visible = true;
+                    myState.protegoText.visible = true;
+                    window.setTimeout(function() {
+                        myState.protego.visible = false;
+                        myState.protegoText.visible = false;
+                    }, 500);
+                    console.log("Swipe Gesture");
+                    window.setTimeout(function() {gestureAllow = true}, 500);
+                }
+                break;
+            }
+        });
+    });
 }
 
 
