@@ -42,12 +42,36 @@ myState.create = function(){
 
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
+
+        var socket = io();
+
+        var sendAttack(gesture.type) {
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+        }
+
+        socket.on('spell', function(gesture.type){
+            $('#messages').;
+        });
+
+
+        var io = require('socket.io')();
+        io.on('connection', function(socket){
+            socket.to('others').emit('an event', { some: 'data' });
+        });
+
       switch (gesture.type){
           case "circle":
             if (gestureAllow) {
                 gestureAllow = false;
                 myState.stupefy.visible = true;
                 myState.stupefyText.visible = true;
+
+                socket.broadcast.emit('spell', {});
+                $('#m').val('');
+                return false;
+
                 window.setTimeout(function() {
                     myState.stupefy.visible = false;
                     myState.stupefyText.visible = false;
