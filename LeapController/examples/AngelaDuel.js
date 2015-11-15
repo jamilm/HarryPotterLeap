@@ -119,7 +119,7 @@ var Finger = function (state, x, y){
 }
 Kiwi.extend(Finger,Kiwi.GameObjects.Sprite);
 //////////////////////////////////////////////////////
-
+//s
 function protego() {
     myState.protego.visible = false;
     myState.protegoText.visible = false;
