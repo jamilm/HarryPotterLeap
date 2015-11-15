@@ -24,21 +24,27 @@ myState.create = function(){
 
     this.control = Kiwi.Plugins.LEAPController.createController();
 
+    var stopGesture = false;
+
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
       switch (gesture.type){
           case "circle":
-              console.log("Circle Gesture");
-              break;
+            stopGesture = true;
+            setTimeout(function() {stopGesture = false}, 1000);
+            console.log("Circle Gesture");
+            break;
           case "keyTap":
-              console.log("Key Tap Gesture");
-              break;
+            console.log("Key Tap Gesture");
+            break;
           case "screenTap":
-              console.log("Screen Tap Gesture");
-              break;
+            console.log("Screen Tap Gesture");
+            break;
           case "swipe":
-             console.log("Swipe Gesture");
-              break;
+            stopGesture = true;
+            setTimeout(function() {stopGesture = false}, 1000);
+            console.log("Swipe Gesture");
+            break;
         }
     });
 

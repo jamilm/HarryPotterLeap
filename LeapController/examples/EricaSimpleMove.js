@@ -42,11 +42,17 @@ myState.create = function(){
 
     this.control = Kiwi.Plugins.LEAPController.createController();
 
+    var stopGesture = false;
+
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
+      if (stopGesture == false) {
       switch (gesture.type){
           case "circle":
               console.log("Circle Gesture");
+              stopGesture = true;
+              setTimeout(function(){stopGesture = false}, 1000);
+              //this.control.enableGesture((Gesture.Type) circle, false);
               $(".stupefy").show(100, function(){$(this).hide("fast")});
               break;
           case "keyTap":
@@ -59,6 +65,7 @@ myState.create = function(){
              console.log("Swipe Gesture");
               break;
         }
+    }
     });
 
 }
