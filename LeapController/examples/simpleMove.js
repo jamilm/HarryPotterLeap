@@ -13,11 +13,14 @@ myState.create = function(){
     this.addChild(this.player1);
 
 
-
+    /*
     this.finger1 = new Finger(this,300,300);
     this.addChild(this.finger1);
+    */
     this.finger2 = new Finger(this,300,300);
     this.addChild(this.finger2);
+
+    /*
     this.finger3 = new Finger(this,300,300);
     this.addChild(this.finger3);
     this.finger4 = new Finger(this,300,300);
@@ -25,7 +28,7 @@ myState.create = function(){
 
     this.finger5 = new Finger(this,300,300);
     this.addChild(this.finger5);
-
+    */
 
 
     this.control = Kiwi.Plugins.LEAPController.createController();
@@ -40,14 +43,15 @@ myState.update = function(){
     // this.player1.scaleX = this.control.hands[0].roll+1;
     // this.player1.scaleY = this.control.hands[0].pitch+ 1;
 
-
+    /*
     this.finger1.x = (this.control.hands[0].pointables[0].tipX* 1.7) + 400;
     this.finger1.y =((-1 * this.control.hands[0].pointables[0].tipY)*1.7) + 600;
+    */
 
     this.finger2.x = (this.control.hands[0].pointables[1].tipX* 1.7) + 400;
     this.finger2.y =((-1 * this.control.hands[0].pointables[1].tipY)*1.7) + 600;
 
-
+    /*
     this.finger3.x = (this.control.hands[0].pointables[2].tipX* 1.7) + 400;
     this.finger3.y =((-1 * this.control.hands[0].pointables[2].tipY)*1.7) + 600;
 
@@ -57,7 +61,7 @@ myState.update = function(){
 
     this.finger5.x = (this.control.hands[0].pointables[4].tipX* 1.7) + 400;
     this.finger5.y =((-1 * this.control.hands[0].pointables[4].tipY)*1.7) + 600;
-    
+    */
 
 
 
