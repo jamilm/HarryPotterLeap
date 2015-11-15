@@ -40,8 +40,8 @@ myState.update = function(){
 
 
 	Kiwi.State.prototype.update.call(this);
-    this.player1.x = (this.control.hands[0].posX* 1.7) + 400;
-    this.player1.y =((-1 * this.control.hands[0].posY)*1.7) + 600;
+    //this.player1.x = (this.control.hands[0].posX* 1.7) + 400;
+    //this.player1.y =((-1 * this.control.hands[0].posY)*1.7) + 600;
     // this.player1.scaleX = this.control.hands[0].roll+1;
     // this.player1.scaleY = this.control.hands[0].pitch+ 1;
 
@@ -52,6 +52,8 @@ myState.update = function(){
     this.finger2.x = (this.control.hands[0].pointables[1].tipX* 1.7) + 400;
     this.finger2.y =((-1 * this.control.hands[0].pointables[1].tipY)*1.7) + 600;
 
+    this.finger2.scaleX = (this.control.hands[0].pointables[0].touchDistance + 1) / 2;
+    this.finger2.scaleY = (this.control.hands[0].pointables[0].touchDistance + 1) / 2;
 
     //this.finger3.x = (this.control.hands[0].pointables[2].tipX* 1.7) + 400;
     //this.finger3.y =((-1 * this.control.hands[0].pointables[2].tipY)*1.7) + 600;
