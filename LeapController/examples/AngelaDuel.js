@@ -16,7 +16,21 @@ myState.create = function(){
     this.background = new Kiwi.GameObjects.StaticImage(this, this.textures.background, 0, 0);
     this.addChild(this.background);
 
+    //add spell sprites
+    this.protego = new Kiwi.GameObjects.Sprite(this, this.textures.protego, 0, 0);
+    this.protegoText = new Kiwi.GameObjects.Sprite(this, this.textures.protegoText, 0, 0);
+    this.stupefy = new Kiwi.GameObjects.Sprite(this, this.textures.stupefy, 0, 0);
+    this.stupefyText = new Kiwi.GameObjects.Sprite(this, this.textures.stupefyText, 0, 0);
 
+    this.protego.visible = false;
+    this.protegoText.visible = false;
+    this.stupefy.visible = false;
+    this.stupefyText.visible = false;
+
+    this.addChild(this.protego);
+    this.addChild(this.protegoText);
+    this.addChild(this.stupefy);
+    this.addChild(this.stupefyText);
 
     this.finger2 = new Finger(this,300,300);
     this.addChild(this.finger2);
@@ -24,15 +38,23 @@ myState.create = function(){
 
     this.control = Kiwi.Plugins.LEAPController.createController();
 
-    var stopGesture = false;
+    var gestureAllow = true;
 
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
       switch (gesture.type){
           case "circle":
-            stopGesture = true;
-            setTimeout(function() {stopGesture = false}, 1000);
-            console.log("Circle Gesture");
+            if (gestureAllow) {
+                gestureAllow = false;
+                myState.stupefy.visible = true;
+                myState.stupefyText.visible = true;
+                window.setTimeout(function() {
+                    myState.stupefy.visible = false;
+                    myState.stupefyText.visible = false;
+                }, 500);
+                console.log("Circle Gesture");
+                window.setTimeout(function() {gestureAllow = true}, 500);
+            }
             break;
           case "keyTap":
             console.log("Key Tap Gesture");
@@ -41,14 +63,23 @@ myState.create = function(){
             console.log("Screen Tap Gesture");
             break;
           case "swipe":
-            stopGesture = true;
-            setTimeout(function() {stopGesture = false}, 1000);
-            console.log("Swipe Gesture");
+            if (gestureAllow) {
+                gestureAllow = false;
+                myState.protego.visible = true;
+                myState.protegoText.visible = true;
+                window.setTimeout(function() {
+                    myState.protego.visible = false;
+                    myState.protegoText.visible = false;
+                }, 500);
+                console.log("Swipe Gesture");
+                window.setTimeout(function() {gestureAllow = true}, 500);
+            }
             break;
         }
     });
 
 }
+
 
 myState.update = function(){
 
@@ -87,9 +118,17 @@ var Finger = function (state, x, y){
     }
 }
 Kiwi.extend(Finger,Kiwi.GameObjects.Sprite);
+//////////////////////////////////////////////////////
 
+function protego() {
+    myState.protego.visible = false;
+    myState.protegoText.visible = false;
+};
 
-
+function stupefy() {
+    myState.stupefy.visible = false;
+    myState.stupefyText.visible = false;
+};
 
 //////////////////////////////////////////////////////
 //LOADING ASSETS
@@ -123,8 +162,8 @@ loadingState.preload = function(){
     //ASSETS TO LOAD
     this.addImage('finger', 'assets/wandPointingForward.png');
     this.addImage('background', 'assets/duelTable.jpg');
-    this.addImage('protego', 'assets.protego.png');
-    this.addImage('protegoText', 'assets.protegoText.png');
+    this.addImage('protego', 'assets/protego.png');
+    this.addImage('protegoText', 'assets/protegoText.png');
     this.addImage('stupefy', 'assets/stupefy.png');
     this.addImage('stupefyText', 'assets/stupefyText.png');
     //this.addImage('player', 'assets/wandPointingForward.png');
