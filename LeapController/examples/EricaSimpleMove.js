@@ -13,15 +13,20 @@ myState.create = function(){
     this.addChild(this.player1);
 
 
-
+    /*
     this.finger1 = new Finger(this,300,300);
     this.addChild(this.finger1);
+    */
+
     this.finger2 = new Finger(this,300,300);
     this.addChild(this.finger2);
+    
+    /*
     this.finger3 = new Finger(this,300,300);
     this.addChild(this.finger3);
     this.finger4 = new Finger(this,300,300);
     this.addChild(this.finger4);
+    */
 
     //this.finger5 = new Finger(this,300,300);
     //this.addChild(this.finger5);
