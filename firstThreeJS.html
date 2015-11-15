@@ -10,7 +10,15 @@
 	</head>
 	<body>
 		<script src="three.min.js"></script>
+		<script src="http://js.leapmotion.com/leap-0.6.0-beta1.min.js"></script>
+		  <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
+		<script type="text/javascript" src="build/leap.rigged-hand-0.1.7.js"></script>
+		<script src="swipeDetect.js"></script>
+
 		<script>
+			//(window.controller = new Leap.Controller)
+  				//.use('riggedHand')
+  				//.connect()
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
