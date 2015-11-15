@@ -1,0 +1,12 @@
+.stupefy {
+	background-color: #FF0000;
+	width: 1000;
+	height: 300; 
+	opacity: .75;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 8em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	display: none;
+}

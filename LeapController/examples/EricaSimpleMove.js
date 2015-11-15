@@ -47,6 +47,7 @@ myState.create = function(){
       switch (gesture.type){
           case "circle":
               console.log("Circle Gesture");
+              $(".stupefy").show(100, function(){$(this).hide("fast")});
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
