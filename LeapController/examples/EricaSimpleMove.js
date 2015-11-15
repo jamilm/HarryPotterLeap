@@ -1,18 +1,25 @@
 var myGame = new Kiwi.Game("testGameContainer","testGame",myState,{plugins:["LEAPController"]});
-
 var myState = new Kiwi.State('myState');
 var loadingState = new Kiwi.State('loadingState');
 var preloader = new Kiwi.State('preloader');
 
+
+
 myState.preload = function(){
 	Kiwi.State.prototype.preload.call(this);
+    //this.addSpriteSheet( 'characterSprite', 'character.png', 150, 117 );
+    this.addImage( 'background', 'statue.png' );
 }
 
 myState.create = function(){
+
+    Kiwi.State.prototype.create.call( this );
+    this.background = new Kiwi.GameObjects.StaticImage( this, this.textures.background, 0, 0 );
+    //this.character = new Kiwi.GameObjects.Sprite( this, this.textures.characterSprite, 350, 330 );
+
     this.player1 = new Player(this,300,300);
     this.addChild(this.player1);
-
-
+    
     /*
     this.finger1 = new Finger(this,300,300);
     this.addChild(this.finger1);
@@ -181,3 +188,6 @@ myGame.states.addState(myState);
 myGame.states.addState(loadingState);
 myGame.states.addState(preloader);
 myGame.states.switchState('preloader');
+
+
+
