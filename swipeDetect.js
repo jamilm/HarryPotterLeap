@@ -68,9 +68,16 @@ function pokeWand() {
   }
 }
 
+var dtime;
 var controller = Leap.loop({enableGestures: true}, function(frame){
+              dtime = Date.now() - time;
+                          if (attack == true && dtime > 2000) {
+              document.getElementById("demo").innerHTML = "Fuck you scrub";
+              attack = false;
+              }
   if(frame.valid && frame.gestures.length > 0){
     frame.gestures.forEach(function(gesture){
+
         switch (gesture.type){
           case "circle":
               if (caseClosed) {
@@ -88,12 +95,20 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               break;
           case "swipe":
           if (caseClosed) {
+            if (attack == true && dtime < 2000) {
+              document.getElementById("demo").innerHTML = "Blocked bitch";
+              attack = false;
+            }
                 caseClosed = false;
                 swipeWand();
                 $(".protego").show(100, function(){$(this).hide("slow", 
                   function(){caseClosed = true})});
+
               }
               break;
+
+            
+
         }
 
         setTimeout(function(){
@@ -102,3 +117,25 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     });
   }
 });
+var time; 
+var attack;
+function attackFunction() {
+  startTimer(2, $('#time'));
+  time = Date.now();
+  attack = true
+    // document.getElementById("demo").innerHTML = time;
+    //alert("Fuck you Erica");
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        seconds = parseInt(timer);
+        display.text(seconds);
+        if (--timer < 0) {
+            display.text("");;
+        }
+    }, 1000);
+}
+
+
