@@ -72,7 +72,7 @@ var dtime;
 var controller = Leap.loop({enableGestures: true}, function(frame){
               dtime = Date.now() - time;
                           if (attack == true && dtime > 2000) {
-              document.getElementById("demo").innerHTML = "Fuck you scrub";
+              document.getElementById("demo").innerHTML = "Hit!";
               attack = false;
               }
   if(frame.valid && frame.gestures.length > 0){
@@ -83,6 +83,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
               if (caseClosed) {
                 caseClosed = false;
                 pokeWand();
+                document.getElementById("demo").innerHTML = "You Win!";
                 $(".stupefy").show(100, function(){$(this).hide("slow",
                   function(){caseClosed = true})});
               }
@@ -96,7 +97,7 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
           case "swipe":
           if (caseClosed) {
             if (attack == true && dtime < 2000) {
-              document.getElementById("demo").innerHTML = "Blocked bitch";
+              document.getElementById("demo").innerHTML = "Blocked!";
               attack = false;
             }
                 caseClosed = false;

@@ -42,6 +42,7 @@ myState.create = function(){
 
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
+    	
       switch (gesture.type){
           case "circle":
             if (gestureAllow) {

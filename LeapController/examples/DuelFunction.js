@@ -6,7 +6,6 @@ var duel = function(myState) {
 
     //add event listener for controller
     this.control.leapControl.on('gesture', function(gesture, frame){
-
         switch (gesture.type){
         
             case "circle":
@@ -27,7 +26,9 @@ var duel = function(myState) {
             break;
         
             case "swipe":
+
                 if (gestureAllow) {
+alert("Sd");
                     gestureAllow = false;
                     castSpell(myState.protego, myState.protegoText);
                     console.log("Swipe Gesture");
@@ -40,10 +41,20 @@ var duel = function(myState) {
 
 
 var castSpell = function(gesture, guestureText) {
+	
     gesture.visible = true;
     gestureText.visible = true;
     window.setTimeout(function() {
         gesture.visible = false;
         gestureText.visible = false;
     }, 500);
+}
+
+var time; 
+var attack;
+function attackFunction() {
+  time = Date.now();
+  attack = true
+    //document.getElementById("demo").innerHTML = time;
+    alert("Fuck you Erica");
 }
